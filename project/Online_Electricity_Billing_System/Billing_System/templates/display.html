@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Net Banking{% endblock title %}
+
+{% block body %}
+<style>
+input[type=number], select{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+</style>
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+		
+	<img src="/static/image/img9.jpeg">
+	<form action="{% url 'utility' %}" method="post">
+	{% csrf_token %}
+	<table align="center" style="background-color:#ADD8E6;padding: 5px;
+	border-radius:20px; margin-top:15px; width:50%">
+	<tr>
+	<th colspan="2"><h2><b><u><center>Please Enter Details</center></u></b></h2>
+	</th>
+	</tr>
+	<td>
+		<label for="unit"><h2>Unit</h2></label> 
+	</td>
+	<td>
+		<input type="text" name="unit" placeholder="Enter Uint consumed unit" required  value = "{{ unit }}" readonly />
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="amount"><h2>amount</h2></label> 
+	</td>
+	<td>
+		<input type="text" name="amount" value="{{amount}}" readonly="" />
+	</td>
+	</tr>
+	<
+	<tr>
+	<th colspan="2"><input type="submit" value="Back"></th>
+	</tr>
+	</table>
+	
+</form>
+
+{% endblock body %}

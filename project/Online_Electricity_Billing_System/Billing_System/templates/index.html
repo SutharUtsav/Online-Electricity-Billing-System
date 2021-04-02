@@ -1,0 +1,25 @@
+{% extends 'Billing_System/base.html' %}
+
+{% block title %}INDEX{% endblock title %}
+
+{% block content %}
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+	<div >
+		<img src="/static/image/homepage.png" style="margin-left: 20%;margin-right: auto; width: 65%; height: auto"  >
+	</div>
+	<h1><center>Login As</center></h1>
+	<div class="container ">
+		<a href="/admin"><img src="/static/image/img2.jpeg" alt="admin"><button class="btn">Admin</button></a><center>Admin</center>
+	</div>
+	<br/>
+	<div class="container">
+		<a title="User login" href="{% url 'login'  %}"><img src="/static/image/img3.jpeg"><button class="btn">User</button></a><center>User</center>
+	</div>
+	<br><br>
+	<div class="footer">
+	<br>
+	<center>Save the nation by saving energy</center>
+	<br>
+	</div>
+{% endblock content %}

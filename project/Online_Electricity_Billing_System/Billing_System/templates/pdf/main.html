@@ -1,0 +1,18 @@
+{% extends 'pdf/base.html' %}
+
+{% block title %}
+bill
+{% endblock title %}
+
+{% block content%}
+	{% for bill in  model %}
+		{% if id == bill.key.id%}
+			{{bill}}
+
+		<a href="{% url 'render_pdf_view' bill.pk %}"><button class="btn btn-primary" style="margin-left: 30%">pdf</button></a>
+		
+		<br/>
+		<hr>
+		{% endif %}
+	{% endfor %}
+{% endblock content %}

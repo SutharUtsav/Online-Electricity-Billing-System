@@ -1,0 +1,27 @@
+{% extends 'pdf/base.html' %}
+
+{% block title %}
+bill
+{% endblock title %}
+
+{% block content%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+	<link rel = "icon" href ="/static/image/logo.jpg" type = "image/x-icon">
+
+	<h3 align="center" style="color: yellow">Bills</h3>
+	<div >
+	{% for bill in  model %}
+		{% if id == bill.key.id%}
+			<hr>			
+			<p style="margin-left: 15%" >Bill->{{bill.id}}</p>
+			<p style="margin-left: 15%" >Date->{{bill.month}}
+			<a href="{% url 'render_pdf_view' bill.pk %}"><button class="btn btn-primary" style="margin-left: 30%">View</button></a>
+			<a href="{% url 'render_pdf_download' bill.pk %}"><button class="btn btn-primary" >Download</button></a>
+			<a href="{% url 'render_pdf_delete' bill.pk %}"><button class="btn btn-primary" >Delete</button></a>
+			</p>
+			<hr style="color:white">
+		{% endif %}
+	{% endfor %}
+</div>
+{% endblock content %}

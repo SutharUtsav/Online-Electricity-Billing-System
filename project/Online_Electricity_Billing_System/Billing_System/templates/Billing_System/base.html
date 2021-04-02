@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock title %}</title>
+	{%   include 'Billing_System/snippets/header.html' %}
+	<link rel = "icon" href ="/static/image/logo.jpg" type = "image/x-icon">
+  </head>
+  
+  <body>
+		<div class="header"><h1 align="center">Online Electricity Billing System</h1></div> 
+  
+		
+		<style type="text/css">
+			.main{
+				min-height: 100vh;
+				height: 100%;
+			}
+			.container {
+			  max-width: 960px;
+			}
+
+			.pricing-header {
+			  max-width: 700px; 
+			}
+		</style>
+		<div class="main">
+
+			{% block content %}
+			{% endblock content%}
+		</div>
+	
+
+  </body>
+</html>
+
+
+
+
+
+
+

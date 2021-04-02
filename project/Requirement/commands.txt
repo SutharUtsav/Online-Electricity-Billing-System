@@ -1,0 +1,20 @@
+
+install xhtml2pdf
+--- $pip install xhtml2pdf
+install pillow
+--- $pip install pillow
+install reportlab
+--- $pip install reportlab
+
+For testing
+
+insatll selenium
+---$pip install selenium
+
+
+
+install mysql connector module(for connection with database)
+---$pip install mysql-connector
+
+install wheel module (command line tool for working with wheel files)
+--$pip install wheel

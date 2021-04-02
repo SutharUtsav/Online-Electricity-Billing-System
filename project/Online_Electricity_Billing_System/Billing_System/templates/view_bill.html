@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}View Bill{% endblock title %}
+
+{% block content %}
+{% load static %}
+{% if messages %}
+	<style>
+	.alert {
+		padding: 20px;
+		background-color: #f44336;
+		color: white;
+	}
+
+	.closebtn {
+		margin-left: 15px;
+		color: white;
+		font-weight: bold;
+		float: right;
+		font-size: 22px;
+		line-height: 20px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	.closebtn:hover {
+		color: black;
+	}
+	</style>
+	<div class="alert"> 
+	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	<strong>{% for message in messages %}
+		<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }} </li>
+		{% endfor %}</strong>
+	
+	</div>
+	{% endif %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+		<!-- <img src="/static/image/img4.jpeg"  > -->
+		<center>
+		<h2><font color="white">Here are the options</font></h2>
+	<div class="container margin-top:4px">
+		<a href="{% url 'generate_bill'%}"><img src="/static/image/img8.jpeg" alt="net banking"><button class="btn"></button></a><center>Generate Bill</center>
+	</div>
+	<br/>
+	<br/>
+	<div class="container">
+		<a href="/pdf/view/"><img src="/static/image/download.jpg" width="200" height="200" alt="UPI"><button class="btn"></button></a><center>Bill Demo</center>
+	</div><br/>
+	<h2><font color="white">Other Links</font></h2>
+	<div class="container" style="background-color:green">
+	<a href="/payment/"><button class="btn"></button></a><center>Pay Bill</center>
+	</div><br/>
+	<div class="container" style="background-color:green">
+		<a href="{% url 'status'%}"><button class="btn"></button></a><center>View
+		Status</center>
+	</div>
+	<main >
+	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h2 class="display-6"><font color="white">Electrincity Bill Payment</font></h1>
+		<p class="lead">In this website you can pay  electricity bill without going at electricity department.</p>
+	</div>
+</main>
+</center>
+
+{% endblock content %}

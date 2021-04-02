@@ -1,0 +1,28 @@
+{% extends "Billing_System/base.html" %}
+
+{% block title %}Payment{% endblock title %}
+
+{% block content %}
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+		<img src="/static/image/img9.jpeg">
+		<center>
+		<h2><font color="white">Choose Method for Payment</font></h2>
+	<div class="container margin-top:4px">
+		<a href="/payment/netbanking/"><img src="/static/image/img10.png" alt="net banking"><button class="btn">Net Banking</button></a><center>Net Banking</center>
+	</div>
+	<br/>
+	<div class="container">
+		<a href="/payment/bhim/"><img src="/static/image/img11.png" alt="UPI"><button class="btn">UPI</button></a><center>UPI</center>
+	</div>
+	<br/>
+	<div class="container">
+		<a href="/payment/mobilebanking/"><img src="/static/image/img12.png" alt="mobile banking"><button class="btn">Wallet</button></a><center>Wallet</center>
+	</div>
+	<br/>
+	<div class="container">
+		<a href="/payment/cradit/"><img src="/static/image/img13.png" alt="cradit"><button class="btn">Cradit/Dabit</button></a><center>Cradit/Dabit Card</center>
+	</div>
+</center>
+
+{% endblock content %}

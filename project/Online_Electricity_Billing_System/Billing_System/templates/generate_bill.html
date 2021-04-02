@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block title %}Generate billNo{% endblock title %}
+
+{% block body %}
+<style>
+input[type=number], select{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+</style>
+{% load static %}
+{% if messages %}
+	<style>
+	.alert {
+		padding: 20px;
+		background-color: #f44336;
+		color: white;
+	}
+
+	.closebtn {
+		margin-left: 15px;
+		color: white;
+		font-weight: bold;
+		float: right;
+		font-size: 22px;
+		line-height: 20px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	.closebtn:hover {
+		color: black;
+	}
+	</style>
+	<div class="alert"> 
+	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	<strong>{% for message in messages %}
+		<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }} </li>
+		{% endfor %}</strong>
+	
+	</div>
+	{% endif %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+		
+	<!-- <img src="/static/image/img9.jpeg"> -->
+	<h2 style="background-color: green" align="center">Generate Bill</h2>
+	<form action="{% url 'generate_bill'%}" method="post">
+	{% csrf_token %}
+	<table align="center" style="background-color:#A9A9A9;padding: 5px;
+	border-radius:20px; margin-top:15px; width:50%">
+	<tr>
+	<th colspan="2"><h2><b><u><center>Please Enter Details</center></u></b></h2>
+	</th>
+	</tr>
+	<tr>
+	<td>
+		<label for="meterNo"><h2>Meter No:</h2></label> 
+	</td>
+	<td>
+		<input type="text" name="meter_no" placeholder="Enter Meter Number" required  value = "{{ meter_no }}" readonly />
+	</td>
+	</tr>
+	<tr >
+	<td style="width:50%">
+		<label for="customerNo"><h2>Customer Name:</h2></label>
+	</td>
+	<td>
+		<input type="text" name="username" value="{{ username }}" placeholder="Enter Customer Number" required  readonly />
+		</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="billNo"><h2>Bill No:</h2></label> 
+	</td>
+	<td>
+		<input type="text" name="bill_no" placeholder="Enter Bill Number"  value = "{{ bill_no }}" readonly  />
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="Unit"><h2>unit consumed:</h2></label> 
+	</td>
+	<td>
+		<input type="number" name="unit" placeholder="Enter unit consumed " required />
+	</td>
+	</tr>
+	{% for field in account_form %}
+                <p>
+                    {% for error in field.errors%}
+                        <p style="color:red;">{{error}}</p>
+                    {% endfor%}
+                </p>
+            {% endfor %}
+
+            {% if account_form.non_field_errors %}
+                <div style="color:red;">
+                    <p>{{account_form.non_field_errors}}</p>
+                </div>
+    {% endif %}
+	<tr>
+	<th colspan="2"><input type="submit" value="Generate"></th>
+	</tr>
+	</table>
+	
+</form>
+
+{% endblock body %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pdf</title>
+	<link rel = "icon" href ="/static/image/logo.jpg" type = "image/x-icon">
+	
+</head>
+<body >
+	{% include 'pdf/main.html'%}
+	<p>Date:{{bill.date.month}}</p>
+	<hr>
+	<table border="2" style="padding: 5px;background-color:#f2f2f2;">
+		<tr>
+			<th colspan="4" >
+				<h1 align="center" style="color:blue;font-style: oblique;"><u>Final-Electricity-Bill</u></h1>
+			</th>
+		</tr>
+		<tr>
+			<td colspan="2">Name</td>
+			<td colspan="2">{{bill.key_id.username}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">Meter number</td>
+			<td colspan="2">{{bill.key_id.meter_no}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">Phone number</td>
+			<td colspan="2">{{bill.key_id.Phone_number}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">Email Id</td>
+			<td colspan="2">{{bill.key_id.email}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">Bill number</td>
+			<td colspan="2"> {{bill.date.bill_no}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">unit</td>
+			<td colspan="2">{{bill.date.unit}}</td>
+		</tr>
+		</tr>
+		{%  if bill.status %}
+		<tr>
+			<td colspan="2">Payment Details</td>
+			<td colspan="2"><pre>{{bill.detail}}</pre></td>
+		</tr>
+		<tr >
+			<th>Amount</th>
+			<th style="color: green"><u>{{bill.date.amount}}</u></th>
+			<th>Ststus</th>
+			<!-- <In this only paiid bill are displayed so don't need for check status>  -->
+			<th style="color: green"><u>Paid</u></th>
+		</tr>
+		{% else %}
+		<tr >
+			<th>Amount</th>
+			<th style="color: green"><u>{{bill.date.amount}}</u></th>
+			<th>Ststus</th>
+			<!-- <In this only paiid bill are displayed so don't need for check status>  -->
+			<th style="color: red"><u>Not paid</u></th>
+		</tr>
+		{% endif %}
+	</table>
+		
+	
+
+</body>
+</html>

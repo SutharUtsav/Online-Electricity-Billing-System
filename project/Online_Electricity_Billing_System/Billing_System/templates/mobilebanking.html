@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}Mobile Banking{% endblock title %}
+
+{% block body %}
+<style>
+input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+</style>
+
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+	<img src="/static/image/img9.jpeg">
+<form action="/payment/mobilebanking/" method="post">
+{% csrf_token %}
+	<table align="center" style="background-color:#ADD8E6; 
+	border-radius:20px; margin-top:15px width:90%" >
+	<tr align="center">
+	<th colspan="2"><h2><b><u><center>Please Enter Details</center></u></b></h2>
+	</th>
+	</tr>
+	<tr >
+	<td style="width:50%">
+		<label for="customerNo"><h2>Customer No:</h2></label>
+	</td>
+	<td>
+		<input type="text" name="customerNo" placeholder="Enter Customer Number" required value="{{ customer_no }}"/>
+		</td>
+	</tr>
+	<tr >
+	<td style="width:50%">
+		<label for="customerNo"><h2>Date:</h2></label>
+	</td>
+	<td>
+		<input type="text" name="date" value="{{ date }}" placeholder="Enter date" readonly />
+		</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="meterNo"><h2>Meter No:</h2></label> 
+	</td>
+	<td>
+		<input type="text" name="meterNo" placeholder="Enter Meter Number" required value="{{ meter_no }}"/>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="billNo"><h2>Bill No:</h2></label> 
+	</td>
+	<td>
+		<input type="text" name="billNo" placeholder="Enter Bill Number" required value = "{{ bill_no }}"/>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="billamount"><h2>Bill Amount:</h2></label> 
+	</td>
+	<td>
+		<input type="number" name="billAmount" placeholder="Enter Amount to Pay in Rs." required value = "{{ amount }}"/>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="mobileNo"><h2>Mobile Number:</h2></label> 
+	</td>
+	<td>
+		<input type="text" name="mobileNumber" placeholder="Enter Your Mobile Number"maxlength="12" required />
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<label for="ssn"><h2>Social Security Number:</h2></label> 
+	</td>
+	<td>
+		<input type="number" name="ssn" placeholder="Enter Social Security Number" required />
+	</td>
+	</tr>
+	{% if error_message %}
+		{% for error in error_message %}
+			<div style="color:red;">
+                <tr><td colspan="2"><center><p style="color:red">{{error}}</p></td></tr></center>
+            </div>
+		{% endfor %}
+	{% endif %}
+	<tr>
+	<th colspan="2"><input type="submit" value="Pay"></th>
+	</tr>
+	</table>
+	
+</form>
+
+{% endblock body %}

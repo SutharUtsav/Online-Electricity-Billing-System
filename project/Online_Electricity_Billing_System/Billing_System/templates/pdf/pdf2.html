@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pdf</title>
+	<link rel = "icon" href ="/static/image/logo.jpg" type = "image/x-icon">
+	
+</head>
+<body>
+	{% include 'pdf/main.html'%}
+	<p>Date:{{bill.month}}</p>
+	<hr>
+	<table border="2" style="padding: 5px;background-color:#f2f2f2;">
+		<tr>
+			<th colspan="2">
+				<h1 align="center" style="color:blue;font-style: oblique;"><u>Electricity-Bill</u></h1>
+			</th>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>{{bill.key.username}}</td>
+		</tr>
+		<tr>
+			<td>Meter number</td>
+			<td>{{bill.key.meter_no}}</td>
+		</tr>
+		<tr>
+			<td>Bill number</td>
+			<td>{{bill.bill_no}}</td>
+		</tr>
+		<tr>
+			<td>unit</td>
+			<td>{{bill.unit}}</td>
+		</tr>
+		<tr >
+			<th>Amount</th>
+			<th>{{bill.amount}}</th>
+		</tr>
+	</table>
+		
+	
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Status
+{% endblock title %}
+
+{% block content%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/style_u.css' %}" />
+	<h3 align="center" style="color: yellow">View Bill Status</h3>
+	<div >
+		<!-- <IN This only paid biils are displayed > -->
+	{% for bill in  pay %}
+		{% if id == bill.key_id.id%}
+			<hr style="color:white">
+			<p style="margin-left: 25%" > Date->{{bill.date.month}}</p>
+			<p style="margin-left: 25%" >Bill no->{{bill.date.bill_no}}
+			{% if bill.status %}
+			<button class="btn btn-primary" style="background-color: green" >Paid</button>
+			{% else %}
+			<button class="btn btn-primary" style="background-color: red; " >Not Paid</button>
+			{% endif %}
+			<a href="{% url 'status_pdf_view' bill.pk %}"><button class="btn btn-primary" style="margin-left: 30%">View</button></a>
+			<a href="{% url 'status_pdf_download' bill.pk %}"><button class="btn btn-primary" >Download</button></a>
+			</p>
+			<hr style="color:white">
+		{% endif %}
+	{% endfor %}
+</div>
+{% endblock content %}
